@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/a.png";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { CiMail } from "react-icons/ci";
 import axios from "axios";
@@ -74,12 +74,10 @@ const ForgotPassowrd = () => {
                     <div className="hidden w-full md:block xl:w-1/2">
                         <div className="px-26 py-17.5 text-center">
                             <Link className="mb-5.5 inline-block" href="/">
-                                <img className="" src={logo} alt="Logo" width={400} />
+                                <img className="" src={logo} alt="Logo" width={500} />
                             </Link>
 
-                            <p className="2xl:px-20" style={{ fontSize: '30px', fontWeight: '500', color: "#007bff" }}>
-                                TNTECH
-                            </p>
+
                             <p style={{ fontSize: '20px', fontWeight: '500', }}>Tiên phong công nghệ - Chất lượng hàng đầu</p>
 
                         </div>

@@ -249,11 +249,11 @@ const PurchaseHistory = () => {
                                             }}>
                                                 <span style={{ fontWeight: 'bold' }}>{item.product_name}</span>
                                                 <span>
-                                                    {item.order_detail_quantity} x {Number(item.product_price).toLocaleString()}đ
+                                                    {item.order_detail_quantity} x {Number(item.product_price - (item.product_price * item.discount_id / 100)).toLocaleString()}đ
                                                 </span>
                                             </div>
                                             <div style={{ textAlign: 'right', fontWeight: 'bold' }}>
-                                                = {Number(item.product_price * item.order_detail_quantity).toLocaleString()}đ
+                                                = {Number((item.product_price - (item.product_price * item.discount_id / 100)) * item.order_detail_quantity).toLocaleString()}đ
                                             </div>
                                         </div>
                                     </div>

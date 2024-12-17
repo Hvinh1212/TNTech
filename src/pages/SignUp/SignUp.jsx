@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/a.png";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import { CiUser, CiLock, CiMail } from "react-icons/ci";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Layout } from "antd";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -160,7 +159,7 @@ const SignUp = () => {
     }
 
     return (
-        <Layout>
+        <div>
             <Breadcrumb pageName="Đăng ký" />
 
             <div className="mt-5 mb-10 rounded-sm border border-strokeshadow-default ">
@@ -168,11 +167,9 @@ const SignUp = () => {
                     <div className="hidden w-full md:block xl:w-1/2">
                         <div className="px-26 py-17.5 text-center">
                             <Link className="mb-5.5 inline-block" href="/">
-                                <img className="" src={logo} alt="Logo" width={400} />
+                                <img className="" src={logo} alt="Logo" width={500} />
                             </Link>
-                            <p className="2xl:px-20" style={{ fontSize: '30px', fontWeight: '500', color: "#007bff" }}>
-                                TNTECH
-                            </p>
+
                             <p style={{ fontSize: '20px', fontWeight: '500', }}>Tiên phong công nghệ - Chất lượng hàng đầu</p>
 
                         </div>
@@ -304,7 +301,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </div>
     );
 };
 

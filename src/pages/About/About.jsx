@@ -4,7 +4,7 @@ import { DataContexts } from "../../AppContexts/Contexts";
 import QuestionBox from "./QuestionBox";
 import lap from "../../assets/images/17068.jpg";
 import back from '../../assets/images/accessory-300.png'
-import tab from '../../assets/images/caterzen_logo.jpg'
+import tab from '../../assets/images/about2.png'
 
 const Introduce = () => {
   const { users, products, manufacturers } = useContext(DataContexts)

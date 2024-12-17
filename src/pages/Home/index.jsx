@@ -1,9 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-import { Layout } from "antd";
-import { toast } from "react-toastify";
 import axios from "axios";
 import { DataContexts } from "../../AppContexts/Contexts";
 import { Swiper, SwiperSlide } from "swiper/react";

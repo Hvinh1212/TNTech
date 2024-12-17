@@ -3,7 +3,7 @@ import { Layout, Input } from 'antd';
 import Navbar from '../../Mini_components/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, useNavigate } from 'react-router-dom';
-import tab from '../../../assets/images/caterzen_logo.jpg'
+import tab from '../../../assets/images/real.png'
 import {
     faUser,
     faBagShopping,
@@ -169,8 +169,7 @@ function Header() {
             <div style={styles.container}>
                 {/* Logo Section */}
                 <div style={styles.logo}>
-                    <img src={tab} className="w-[100px]" />
-                    <span style={styles.logoText}>TnTech</span>
+                    <img src={tab} className="w-[200px]" />
                 </div>
 
                 {/* Mobile Menu Button */}

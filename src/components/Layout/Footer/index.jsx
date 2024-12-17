@@ -2,45 +2,25 @@
 import { Button, Input, Layout } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMeteor, faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import tab from '../../../assets/images/caterzen_logo.jpg'
+import tab from '../../../assets/images/real.png'
 
 
 
 function Footer() {
-    const { Footer } = Layout;
     return (
-        <Footer style={{
-            backgroundColor: 'white',
-            borderTop: '2px solid #dbdbdb',
-            padding: 'clamp(20px, 3vw, 30px) clamp(16px, 2vw, 20px)' // Responsive padding
-        }}>
-            <div className='footer__container' style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', // Responsive grid
-                gap: 'clamp(20px, 3vw, 40px)',
-                maxWidth: '1400px',
-                margin: '0 auto'
-            }}>
+        <div className="bg-white border-t-2 border-gray-200 px-4 py-8 sm:px-6 lg:px-8">
+            <div className="footer__container grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-xl mx-auto">
                 {/* Logo và thông tin công ty */}
                 <div className='footer__app__info'>
-                    <div className='footer__logo' style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'flex-start',
-                        gap: '16px'
-                    }}>
+                    <div className="flex flex-col items-start gap-4">
                         <div style={{
                             display: 'flex',
                             alignItems: 'center',
                             gap: '8px',
                             marginBottom: '16px'
                         }}>
-                            <img src={tab} className="w-[100px]" />
-                            <span style={{
-                                fontSize: '3rem',
-                                fontWeight: 'bold'
-                            }}>TnTech</span>
+                            <img src={tab} className="w-[200px]" />
+
                         </div>
                         <ul style={{
                             listStyle: 'none',
@@ -66,18 +46,9 @@ function Footer() {
 
                 {/* Sản phẩm */}
                 <div className='footer__product'>
-                    <p style={{
-                        fontSize: 'clamp(18px, 2vw, 20px)',
-                        fontWeight: '500',
-                        marginBottom: '16px'
-                    }}>Tổng đài hỗ trợ</p>
-                    <ul style={{
-                        listStyle: 'none',
-                        fontSize: 'clamp(14px, 1.6vw, 16px)',
-                        padding: '0',
-                        margin: '0'
-                    }}>
-                        <li className="footer__product__list__item" style={{ marginBottom: '8px' }}>
+                    <p className="text-lg font-semibold mb-4">Tổng đài hỗ trợ</p>
+                    <ul className="list-none p-0">
+                        <li className="mb-2">
                             <p
                                 style={{
                                     color: '#666',
@@ -86,7 +57,7 @@ function Footer() {
 
                             >Gọi mua: <span style={{ fontWeight: 500, color: '#1677ff' }}>0123456789</span> (8:00 - 21:30)</p>
                         </li>
-                        <li className="footer__product__list__item" style={{ marginBottom: '8px' }}>
+                        <li className="mb-2">
 
                             <p
                                 style={{
@@ -111,18 +82,9 @@ function Footer() {
 
                 {/* Danh mục */}
                 <div className='footer__category'>
-                    <p style={{
-                        fontSize: 'clamp(18px, 2vw, 20px)',
-                        fontWeight: '500',
-                        marginBottom: '16px'
-                    }}>Thông tin khác</p>
-                    <ul style={{
-                        listStyle: 'none',
-                        fontSize: 'clamp(14px, 1.6vw, 16px)',
-                        padding: '0',
-                        margin: '0'
-                    }}>
-                        <li className="footer__product__list__item" style={{ marginBottom: '8px' }}>
+                    <p className="text-lg font-semibold mb-4">Thông tin khác</p>
+                    <ul className="list-none p-0">
+                        <li className="mb-2">
                             <p
                                 style={{
                                     color: '#666',
@@ -172,47 +134,26 @@ function Footer() {
 
                 {/* Đăng ký */}
                 <div className='footer__register'>
-                    <p style={{
-                        fontSize: 'clamp(18px, 2vw, 20px)',
-                        fontWeight: '500',
-                        marginBottom: '16px'
-                    }}>Đăng ký</p>
-                    <p style={{
-                        fontSize: 'clamp(14px, 1.6vw, 16px)',
-                        marginBottom: '16px',
-                        color: '#666'
-                    }}>
+                    <p className="text-lg font-medium mb-4">Đăng ký</p>
+                    <p className="text-sm text-gray-600 mb-4">
                         Đăng ký ngay để nhận được thông tin mới nhất từ chúng tôi
                     </p>
-                    <div style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '8px'
-                    }}>
+                    <div className="flex flex-wrap gap-3">
                         <Input
-                            style={{
-                                flex: '1',
-                                minWidth: '200px',
-                                borderRadius: '8px',
-                                height: '40px'
-                            }}
+                            className="flex-1 min-w-[100px] sm:min-w-[150px] h-10 rounded-md"
                             placeholder='Email...'
                         />
                         <Button
                             type="primary"
                             htmlType="submit"
-                            style={{
-                                height: '40px',
-                                borderRadius: '8px',
-                                padding: '0 24px'
-                            }}
+                            className="h-10 rounded-md px-6"
                         >
                             Đăng ký
                         </Button>
                     </div>
                 </div>
             </div>
-        </Footer>
+        </div>
     );
 }
 

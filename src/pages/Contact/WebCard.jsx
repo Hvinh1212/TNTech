@@ -1,4 +1,3 @@
-import logo from "../../assets/images/logo.png";
 import React, { useContext } from "react";
 import { MdPlace, MdLocalPhone } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
