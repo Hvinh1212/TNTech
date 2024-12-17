@@ -1,0 +1,96 @@
+
+.orders {
+  display: flex;
+  flex-direction: row; 
+  min-height: 100vh;
+  width: 100%; 
+  background-color: #f4f4f4; 
+  margin: 0; 
+  padding: 0; 
+}
+
+.orderContainer {
+  flex-grow: 1; 
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 0; 
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #e9ecef;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.modal-content ul li {
+  margin: 5px 0;
+}
+
+#deleteBtn{
+  background-color: #dc3545;
+}
+
+.right-side {
+  background-color: #f4f4f4; 
+  padding: 20px; 
+  border-radius: 8px; 
+}
+
+.right-side p {
+  margin: 0 0 10px; 
+  font-size: 16px; /* Font size for better readability */
+}
+
+.right-side ul {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.right-side ul li {
+  background-color: white;
+  margin: 10px 0; 
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.right-side ul li p {
+  margin: 5px 0; 
+  font-size: 14px; 
+}
+
+.right-side ul li p strong {
+  font-weight: bold;
+}

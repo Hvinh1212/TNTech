@@ -10,13 +10,18 @@ Các bước cài đặt và sử dụng:
 + npm run dev
 
  * Back-end: API
- - Mở terminal: 
- + Clone git
+ - Mở terminal, cd api
  + npm install / npm i
  + node server.js localhost:5000/
 
  * Database
  + Run query tạo Database thiết lập env trong file .env (đã thiết lập cho PostgreeSQL)
+
+ * admin:
+ - Mở terminal, 
+ + cđ admin
+ + npm install / npm i
+ + npm start
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
