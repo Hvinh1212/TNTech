@@ -1,5 +1,7 @@
 # Đồ án Internet và công nghệ web - IE104
+# Trang web bán lẻ hàng công nghệ TnTech
 
+* Front-end:
 Các bước cài đặt và sử dụng:
 - Clone git
 - Mở terminal:
@@ -7,6 +9,14 @@ Các bước cài đặt và sử dụng:
 + npm install / npm i
 + npm run dev
 
+ * Back-end: API
+ - Mở terminal: 
+ + Clone git
+ + npm install / npm i
+ + node server.js localhost:5000/
+
+ * Database
+ + Run query tạo Database thiết lập env trong file .env (đã thiết lập cho PostgreeSQL)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
