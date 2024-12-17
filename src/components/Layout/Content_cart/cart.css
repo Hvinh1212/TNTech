@@ -1,0 +1,105 @@
+    /* Base styles */
+    .cart-container {
+        @apply w-full max-w-6xl mx-auto p-5;
+    }
+
+    /* Cart Header */
+    .content__user__head {
+        @apply flex items-center flex-wrap my-3;
+    }
+
+    .content__user__head>* {
+        @apply mr-2;
+    }
+
+    /* Cart Main Content */
+    .content__cart__main {
+        @apply p-5;
+    }
+
+    /* Cart Info */
+    .cart__info {
+        @apply bg-white p-5 rounded-lg border border-gray-300 shadow-lg;
+    }
+
+    /* Table Responsive */
+    .cart-table {
+        @apply w-full;
+    }
+
+    /* .cart-table .ant-table-thead {
+    @apply hidden;
+} */
+
+    .cart-table .ant-table-tbody>tr {
+        @apply block mb-4 border border-gray-300 rounded-lg p-3;
+    }
+
+    .cart-table .ant-table-tbody>tr>td {
+        @apply flex items-center border-none py-2;
+    }
+
+    /* Product Item */
+    .cart-product-item {
+        @apply flex items-center w-full mb-2;
+    }
+
+    .cart-product-image {
+        @apply w-24 h-24 mb-2 rounded-lg shadow-md;
+    }
+
+    /* Quantity Input */
+    .cart-quantity-input {
+        @apply w-16 max-w-xs;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 768px) {
+        .cart-container {
+            @apply p-2;
+        }
+
+        .cart-product-item {
+            @apply flex-col items-start;
+        }
+
+        .cart-product-image {
+            @apply w-20 h-20;
+        }
+
+        .cart__info {
+            @apply p-3;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .cart-product-image {
+            @apply w-16 h-16;
+        }
+
+        .cart-quantity-input {
+            @apply max-w-full;
+        }
+    }
+
+    /* Button Style */
+    .cart-total-price {
+        @apply text-lg font-bold;
+    }
+
+    .cart-checkout-btn {
+        @apply bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition duration-200;
+    }
+
+    /* Nút xóa sản phẩm */
+    .cart-remove-icon {
+        @apply text-red-500 cursor-pointer hover:text-red-700 transition duration-200;
+        @apply rounded-full p-1;
+        margin-right: 10px;
+        font-size: 20px;
+        @apply bg-white;
+    }
+
+    .cart-remove-icon:hover {
+        @apply bg-red-100;
+    }

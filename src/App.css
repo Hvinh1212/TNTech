@@ -1,0 +1,67 @@
+.root {
+  --text-color: #333;
+  --border-color: #dbdbdb;
+
+}
+
+/* Header */
+.header__account {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 4px;
+  color: var(--text-color);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.header__cart {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: var(--text-color);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+/* Account: Content user header */
+
+.content__user__head-home {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+
+  }
+}
+
+.content__user__head-home a {
+  color: black;
+
+  &:hover {
+    color: #1677ff;
+  }
+
+}
+
+/* Footer */
+
+
+/* Ant table list order management */
+.ant-table-thead th {
+  background-color: white !important;
+  border-bottom: 2px solid black !important;
+}
+
+body {
+  background-color: #F2F9FF;
+}
+
+input::-ms-reveal { display: none; }
