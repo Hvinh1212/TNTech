@@ -117,7 +117,7 @@ function OrderTracking() {
 
 
         return (
-            <div className='order__tracking__info' style={{
+            <div className='oder__tracking__info shadow-xl' style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -301,7 +301,7 @@ function OrderTracking() {
                                     <OrderDetail key={order.order_id} order={order} />
                                 ))
                             ) : (
-                                <Empty description="Không có đơn hàng nào" />
+                                <Empty description="Không có đơn hàng nào đang giao" />
                             )}
                         </div>
                     </div>

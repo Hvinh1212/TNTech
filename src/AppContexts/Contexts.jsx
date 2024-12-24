@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const DataContexts = createContext({});
@@ -14,7 +14,9 @@ export const AppProvider = ({ children }) => {
   const [carts, setCarts] = useState([]);
   // const [shop, setShop] = useState([]);
   const [banners, setBanners] = useState([]);
-  // const [userCart, setUserCart] = useState([]);
+
+
+  const [userCart, setUserCart] = useState([]);
 
   const id = localStorage.getItem("id")
 
@@ -59,7 +61,7 @@ export const AppProvider = ({ children }) => {
   };
 
 
-  const fetchCartData = async () => {
+  const fetchCartData = async (id) => {
     try {
       const response = await fetch(`http://localhost:5000/api/customers`);
       const data = await response.json();
@@ -94,6 +96,27 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+
+  const fetchCartUser = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/customers`);
+      const data = await response.json();
+      const customerData = data.find(customer => customer.user_id === parseInt(id));
+
+      if (customerData) {
+        try {
+          const res = await axios.get(`http://localhost:5000/api/carts/${customerData.customer_id}`);
+          setUserCart(res.data);
+        } catch (err) {
+          console.error('Error fetching user cart:', err);
+        }
+      } else {
+        console.log("Customer not found for the given user ID.");
+      }
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    }
+  };
 
 
   // const fetchCartUser = (id) => {
@@ -192,6 +215,15 @@ export const AppProvider = ({ children }) => {
   //     });
   // };
 
+
+
+  const updateCartCount = (newCount) => {
+    setCartData(prevData => {
+      return prevData;
+    });
+  };
+
+
   const fetchBanners = () => {
     axios
       .get("http://localhost:5000/api/banners")
@@ -220,7 +252,8 @@ export const AppProvider = ({ children }) => {
       return;
     }
     fetchCustomerId()
-    fetchCartData();
+    fetchCartData(id);
+    fetchCartUser(id);
     fetchUserInfo(id)
   }, [id]);
 
@@ -250,11 +283,14 @@ export const AppProvider = ({ children }) => {
         fetchBanners,
         cartData,
         fetchCartData,
+        fetchCartUser,
+        userCart,
         customerId,
         fetchCustomerId,
         userInfo,
         setUserInfo,
-        fetchUserInfo
+        fetchUserInfo,
+        updateCartCount,
       }}
     >
       {children}

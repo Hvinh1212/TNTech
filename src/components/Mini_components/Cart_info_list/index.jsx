@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
     Typography,
     Table,
@@ -11,7 +11,8 @@ import {
 } from 'antd';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import { DataContexts } from "../../../AppContexts/Contexts";
+import { DataContexts } from '../../../AppContexts/Contexts';
+
 
 
 const { Text } = Typography;
@@ -20,9 +21,10 @@ const Cart = () => {
     const [originalCartData, setOriginalCartData] = useState([]);
     const [cartData, setCartData] = useState([]);
     const [customerId, setCustomerId] = useState(null);
-
     const userId = localStorage.getItem('id');
     const navigate = useNavigate();
+
+    const { fetchCartUser } = useContext(DataContexts);
 
     // Fetch customer data
     const fetchCustomerData = async () => {
@@ -113,7 +115,7 @@ const Cart = () => {
                 prevData.filter(item => item.productId !== productId)
             );
             fetchCartData(customerId);
-
+            fetchCartUser(userId)
         } catch (error) {
             console.error('Error removing cart item:', error);
             notification.error({

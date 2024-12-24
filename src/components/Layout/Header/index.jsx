@@ -15,15 +15,14 @@ import { DataContexts } from '../../../AppContexts/Contexts';
 
 function Header() {
     const userID = localStorage.getItem("id")
-    const { cartData, fetchCartData, userInfo } = useContext(DataContexts)
-    const { Header } = Layout;
+    const { userCart, userInfo, fetchCartUser } = useContext(DataContexts)
     const { Search } = Input;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+
     const [query, setQuery] = useState("")
     useEffect(() => {
-
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
@@ -42,12 +41,15 @@ function Header() {
         setQuery("");
     };
 
+    const [firstLogin, setFirstLogin] = useState(true);
+
     useEffect(() => {
-        if (userID) {
-            // fetchCartUser(userID);
+        if (userID && firstLogin) {
+            fetchCartUser(userID);
+            setFirstLogin(false);
         }
-        return
-    }, [userID, fetchCartData]);
+        return;
+    }, [userID, fetchCartUser, firstLogin]);
 
 
     const styles = {
@@ -141,7 +143,7 @@ function Header() {
         },
         icon: {
             fontSize: '2rem',
-            padding: '0 0.5rem'
+            padding: '0 0.5rem',
         },
         textContainer: {
             display: 'flex',
@@ -200,7 +202,7 @@ function Header() {
 
                 {/* User Controls */}
                 <div style={styles.headerControl}>
-                    <div style={styles.accountCart}>
+                    <div style={styles.accountCart}  >
                         <FontAwesomeIcon icon={faUser} style={styles.icon} />
 
                         {userID ? (
@@ -216,16 +218,24 @@ function Header() {
                                 </div>
                             )
                         }
-
-
                     </div>
 
                     <div style={styles.accountCart}>
                         <FontAwesomeIcon icon={faBagShopping} style={styles.icon} />
-                        <div style={styles.textContainer}>
-                            <h5 style={styles.heading}>Giỏ hàng</h5>
-                            <a href="/cart" style={styles.link}>Số sản phẩm: {cartData.length}</a>
-                        </div>
+                        {userID ? (
+                            <div style={styles.textContainer}>
+                                <h5 style={styles.heading}>Giỏ hàng</h5>
+                                <a href="/cart" style={styles.link}>Số sản phẩm: {userCart.length}</a>
+                            </div>
+                        )
+                            :
+                            (
+                                <div style={styles.textContainer}>
+                                    <a href="/cart" style={styles.link}>Giỏ hàng</a>
+                                </div>
+                            )
+                        }
+
                     </div>
                 </div>
             </div>

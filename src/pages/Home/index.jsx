@@ -18,14 +18,14 @@ const Home = () => {
 
   return (
     <div className="w-full">
-      <div className="py-5 w-11/12 place-self-center">
+      <div className="py-5 w-11/12 mx-auto">
         <div className="w-2/3">
           <Breadcrumb />
         </div>
       </div>
 
-      <div className=" w-full mt-5 mb-10 rounded-sm border border-stroke shadow-default place-self-center ">
-        <div className="w-full flex place-self-center place-items-center place-content-center justify-items-center items-center">
+      <div className="w-full mt-5 mb-10 rounded-sm border border-stroke shadow-default">
+        <div className="w-full flex justify-center">
           <Swiper
             loop={true}
             autoplay={{
@@ -37,21 +37,19 @@ const Home = () => {
               clickable: true,
             }}
             modules={[Pagination, Autoplay]}
-
           >
-            {banners.map((banner, index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <img src={banner.banner_img} className="w-full h-[600px]" />
-                </SwiperSlide>
-              );
-            })}
+            {banners.map((banner, index) => (
+              <SwiperSlide key={index}>
+                <img src={banner.banner_img} className="w-full h-[600px] object-cover" alt={`Banner ${index}`} />
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>
-      <div className="w-11/12 flex flex-col place-self-center place-content-center">
-        <div className="flex flex-row w-3/4 justify-around place-self-center place-content-center gap-4">
 
+      <div className="w-11/12 flex flex-col mx-auto">
+        <h2 className="text-center text-2xl font-bold mb-5">Thông tin dịch vụ</h2>
+        <div className="flex flex-col md:flex-row md:flex-wrap justify-center gap-4">
           <InfoBox
             icon={TbTruckDelivery}
             title="Vận chuyển toàn quốc"
@@ -72,16 +70,14 @@ const Home = () => {
             title="Đa dạng thanh toán"
             content="Nhiều phương thức"
           />
-
         </div>
+
         <div className="py-5 flex flex-col w-full">
-          <h2 className="uppercase font-bold text-xl">
-            Sản phẩm mới
-          </h2>
+          <h2 className="uppercase font-bold text-xl">Sản phẩm mới</h2>
           <ItemSwiper items={products} className="flex justify-center items-center" />
         </div>
-        <div className="py-5 flex flex-col w-full">
 
+        <div className="py-5 flex flex-col w-full">
           <BrandSelector />
         </div>
       </div>

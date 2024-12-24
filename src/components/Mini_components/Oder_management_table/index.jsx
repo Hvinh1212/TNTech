@@ -56,7 +56,11 @@ const PurchaseHistory = () => {
             const detailResults = await Promise.all(detailPromises);
             const detailsMap = detailResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
-            setOrders(orderData);
+            const sortedOrders = orderData.sort((a, b) => {
+                return new Date(b.order_date) - new Date(a.order_date);
+            });
+
+            setOrders(sortedOrders);
             setOrderDetails(detailsMap);
             setSearch(orderData)
 

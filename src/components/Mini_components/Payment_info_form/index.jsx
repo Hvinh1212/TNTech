@@ -12,12 +12,15 @@ function PaymentInfoForm() {
     const [userData, setUserData] = useState(null);
     const [orderDetails, setOrderDetails] = useState([]);
     const [customerId, setCustomerId] = useState(null);
+    const [customerEmail, setCustomerEmail] = useState(null);
+
     const [cartData, setCartData] = useState([]);
+
 
     const location = useLocation();
     const item = location.state;
-
     const userId = localStorage.getItem('id');
+
 
     useEffect(() => {
         if (userId) {
@@ -37,6 +40,24 @@ function PaymentInfoForm() {
             }
         }
     }, [userId, item]);
+
+    useEffect(() => {
+        if (!userId) {
+            if (item) {
+                const processedItem = item;
+                setCartData([processedItem]);
+                setOrderDetails([processedItem]);
+            } else {
+                fetchCustomerData().then(customerId => {
+                    if (customerId) {
+                        fetchCartData(customerId);
+                    }
+                });
+            }
+        }
+    }, [userId, item]);
+
+
 
     const fetchUserData = async () => {
         try {
@@ -118,8 +139,8 @@ function PaymentInfoForm() {
     }, 0);
     const totalAmount = Math.round(productAmount) + shippingFee;
 
-    const clearCart = async () => {
-        const customer = { customer_id: customerId };
+    const clearCart = async (customer_id) => {
+        const customer = { customer_id: customer_id };
         try {
             const response = await fetch('http://localhost:5000/api/carts/remove', {
                 method: 'DELETE',
@@ -141,6 +162,7 @@ function PaymentInfoForm() {
     };
 
     const onFinish = async (values) => {
+        setCustomerEmail(values.email)
         if (values.paymentmethod === 'cash') {
             values.paymentmethod = 1;
             const orderData = {
@@ -177,9 +199,13 @@ function PaymentInfoForm() {
 
                     if (!item) {
                         navigate('/order-management');
-                        await clearCart();
+                        await clearCart(customerId);
+                    } else {
+                        navigate('/order-management');
                     }
-                    navigate('/order-management');
+                    if (!userId) {
+                        navigate('/san-pham');
+                    }
                 } else {
                     console.error('Failed to place order');
                     notification.error({
@@ -199,12 +225,13 @@ function PaymentInfoForm() {
             }
         } else {
             values.paymentmethod = 2;
+            const randomCustomer = Math.floor(Math.random() * (2000 - 100 + 1)) + 100;
 
             axios.post('http://localhost:5000/api/payment-momo', {
                 order_name: values.name,
                 order_phone: values.sdt,
                 order_delivery_address: values.address,
-                customer_id: customerId,
+                customer_id: customerId ? customerId : randomCustomer,
                 order_total: Math.round(totalAmount),
                 order_details: [...orderDetails.map(item => ({
                     product_id: item.productId,
@@ -246,7 +273,7 @@ function PaymentInfoForm() {
                 if (params.get("resultCode") === "0") {
                     try {
                         const res = await axios.post(`http://localhost:5000/api/orders`, {
-                            customer_id: data.userId,
+                            customer_id: (data.userId < 100) ? data.userId : null,
                             order_details: data.items,
                             paying_method_id: 2,
                             order_delivery_address: data.address,
@@ -254,7 +281,6 @@ function PaymentInfoForm() {
                             order_phone: data.phone,
                             order_total: data.amount,
                         });
-
 
                         if (!res.data || !res.data.success) {
                             notification.error(res.data?.message || "Lỗi hệ thống, thử lại sau");
@@ -268,13 +294,21 @@ function PaymentInfoForm() {
                                 showProgress: true,
                             });
 
-                            if (!item) {
-                                await clearCart();
+                            if (data.userId < 100) {
+                                if ((data.items).length > 1) {
+                                    await clearCart(data.userId);
+                                    navigate('/order-management')
+                                    console.log('userId', userId);
+                                } else {
+                                    navigate('/order-management')
+                                }
+                            } else {
+                                navigate('/san-pham')
+                                console.log('email', customerEmail)
                             }
-                            navigate('/order-management');
+
                         }
                     } catch (error) {
-                        console.error("API Error:", error);
                         notification.error({
                             message: <span style={{ color: 'red', fontWeight: 'bold' }}>Thất bại</span>,
                             description: 'Không thể tạo đơn hàng!',
@@ -348,7 +382,7 @@ function PaymentInfoForm() {
                         name="address"
                         rules={[{ required: true, type: 'string', message: 'Vui lòng nhập địa chỉ hợp lệ' }]}
                     >
-                        <Input size='large' placeholder='Địa chỉ' />
+                        <Input size='large' placeholder='Số nhà, đường, thành phố' />
                     </Form.Item>
 
                     <Form.Item

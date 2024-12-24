@@ -33,22 +33,23 @@ const BrandSelector = () => {
   return (
     <div className="p-5">
 
-      <div className="flex space-x-4 mb-5 w-3/4 place-self-center justify-around  ">
+      <div className="flex flex-wrap justify-center gap-4 mb-5 w-full sm:w-3/4 place-self-centerlex justify-center gap-4 mb-5 w-full sm:w-3/4 place-self-center">
         {manufacturers.map((brand) => (
           <button
             key={brand.supplier_id}
             onClick={() => setSelectedBrand(brand)}
-            className={`py-6 rounded-lg capitalize w-1/5 text-xl font-semibold   ${selectedBrand?.supplier_id === brand.supplier_id
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 text-gray-600"
+            className={`py-3 px-4 sm:py-4 sm:px-6 md:py-6 md:w-[130px] lg:w-[130px] rounded-lg capitalize text-base sm:text-lg md:text-xl font-semibold 
+        ${selectedBrand?.supplier_id === brand.supplier_id
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-600"
               }`}
           >
             {brand.supplier_name}
           </button>
-
         ))}
-
       </div>
+
+
 
       {filteredProducts.length > 0 ? (
         <ItemSwiper items={filteredProducts} />
